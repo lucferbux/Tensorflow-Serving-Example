@@ -1,2 +1,3 @@
 # Tensorflow-Serving-Example
-Example of Tensorflow Serving with Python
+
+Ejemplo de Tensorflow Serving para entrenar un modelo, almacenarlo y servirlo.
