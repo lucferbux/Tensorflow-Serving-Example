@@ -1,3 +1,7 @@
+
+
+
+
 # Contributing
 
 Para comenzar a usar el repositorio, solo hace falta ejecutar:
@@ -12,14 +16,22 @@ Una vez hecho esto, activaremos el entorno virtual ejecutando:
 source venv/bin/activate
 ```
 
-Una vez ejecutado el modelo, si queremos servirlo con Tensorflow tenemos que hacer lo siguiente:
+Para ejecutar el model solo tenemos que hacer
+
+```bash
+python3 main.py
+```
+
+Con ello debería salir una ruta donde **el model o se ha guardado temporalmente**
+
+Una vez ejecutado el modelo, si queremos servirlo con Tensorflow podemos copiar el ultimo mensaje o parametrizar el siguiente código:
 
 ```bash
 docker pull tensorflow/serving
 
 docker run -p 8501:8501 \
-  --platform linux/amd64 \
-  --mount type=bind,source={export_path},target=/models/my_model \
+  --privileged=true --platform linux/amd64 \
+  --mount type=bind,source={export_path},target=/models/fashion_model \
   -e MODEL_NAME=fashion_model -t tensorflow/serving
 ```
 

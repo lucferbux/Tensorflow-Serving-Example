@@ -4,12 +4,14 @@ import matplotlib.pyplot as plt
 
 
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
-              'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+
 
 def prepare_data():
   print("Loading data...")
   fashion_mnist = keras.datasets.fashion_mnist
-  (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+  (train_images, train_labels), (test_images,
+                                 test_labels) = fashion_mnist.load_data()
 
   # scale the values to 0.0 to 1.0
   train_images = train_images / 255.0
@@ -24,17 +26,19 @@ def prepare_data():
 
   return train_images, train_labels, test_images, test_labels
 
+
 def train_model(train_images, train_labels):
   model = keras.Sequential([
-    keras.layers.Conv2D(input_shape=(28,28,1), filters=8, kernel_size=3, 
-                        strides=2, activation='relu', name='Conv1'),
-    keras.layers.Flatten(),
-    keras.layers.Dense(10, name='Dense')
+      keras.layers.Conv2D(input_shape=(28, 28, 1), filters=8, kernel_size=3,
+                          strides=2, activation='relu', name='Conv1'),
+      keras.layers.Flatten(),
+      keras.layers.Dense(10, name='Dense')
   ])
   model.summary()
 
-  model.compile(optimizer='adam', 
-                loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+  model.compile(optimizer='adam',
+                loss=tf.keras.losses.SparseCategoricalCrossentropy(
+                    from_logits=True),
                 metrics=[keras.metrics.SparseCategoricalAccuracy()])
   history = model.fit(train_images, train_labels, epochs=5)
 

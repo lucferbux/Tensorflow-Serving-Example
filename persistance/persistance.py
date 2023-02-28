@@ -2,11 +2,10 @@ from tensorflow import keras
 import tempfile
 import os
 
+
 def save_model(model):
     MODEL_DIR = tempfile.gettempdir()
     export_path = os.path.join(MODEL_DIR, str(1))
-    print(f'MODEL_DIR = {MODEL_DIR}\n')
-    print(f'export_path = {export_path}\n')
 
     keras.models.save_model(
         model,
@@ -18,7 +17,9 @@ def save_model(model):
         options=None
     )
 
-    print(f'\nSaved model: ${export_path}')
+    print(f'\nSaved model: {MODEL_DIR}')
+
+    print(
+        f"docker run -p 8501:8501 --privileged=true --platform linux/amd64 --mount type=bind,source={MODEL_DIR},target=/models/fashion_model -e MODEL_NAME=fashion_model -t tensorflow/serving")
 
     return export_path
-
