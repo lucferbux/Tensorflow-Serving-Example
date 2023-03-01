@@ -28,7 +28,6 @@ fi
 echo "Installing python libraries..."
 # Install Python dependencies
 pip3 install --no-cache-dir -r ./requirements.txt
-pip3 install --no-cache-dir -r ./modules/_requirements.txt
 
 echo "Done!"
 

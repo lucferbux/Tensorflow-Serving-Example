@@ -16,13 +16,13 @@ Una vez hecho esto, activaremos el entorno virtual ejecutando:
 source venv/bin/activate
 ```
 
-Para ejecutar el model solo tenemos que hacer
+Para ejecutar el modelo solo tenemos que hacer
 
 ```bash
 python3 main.py
 ```
 
-Con ello debería salir una ruta donde **el model o se ha guardado temporalmente**
+Con ello debería salir una ruta donde **el modelo se ha guardado temporalmente**
 
 Una vez ejecutado el modelo, si queremos servirlo con Tensorflow podemos copiar el ultimo mensaje o parametrizar el siguiente código:
 
