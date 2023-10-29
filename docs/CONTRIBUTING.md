@@ -1,8 +1,6 @@
-
-
-
-
 # Contributing
+
+## Instalación automática
 
 Para comenzar a usar el repositorio, solo hace falta ejecutar:
 
@@ -16,6 +14,19 @@ Una vez hecho esto, activaremos el entorno virtual ejecutando:
 source venv/bin/activate
 ```
 
+## Instalación manual
+
+Para instalar el repositorio, solo hace falta ejecutar:
+
+```bash
+pip3 install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip3 install --no-cache-dir -r ./requirements.txt
+```
+
+## Ejecución
+
 Para ejecutar el modelo solo tenemos que hacer
 
 ```bash
@@ -23,6 +34,8 @@ python3 main.py
 ```
 
 Con ello debería salir una ruta donde **el modelo se ha guardado temporalmente**
+
+## Model Serving
 
 Una vez ejecutado el modelo, si queremos servirlo con Tensorflow podemos copiar el ultimo mensaje o parametrizar el siguiente código:
 
@@ -34,6 +47,12 @@ docker run -p 8501:8501 \
   --mount type=bind,source={export_path},target=/models/fashion_model \
   -e MODEL_NAME=fashion_model -t tensorflow/serving
 ```
+
+## Predicción
+
+Podemos ver la predicción que vamos a a lanzar ejecutando:
+
+`python3 model/display_prediction.py`
 
 Ahora simplemente para hacer una inferencia ejecutaremos:
 

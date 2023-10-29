@@ -1,6 +1,6 @@
 from model import model_training
 from persistance import persistance
-
+import time
 
 if __name__ == "__main__":
     train_images, train_labels, test_images, test_labels = model_training.prepare_data()
