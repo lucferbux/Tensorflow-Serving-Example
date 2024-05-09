@@ -25,6 +25,14 @@ source venv/bin/activate
 pip3 install --no-cache-dir -r ./requirements.txt
 ```
 
+O si lo queremos hacer con miniconda:
+
+```bash
+conda create --name tensorflow-serving python=3.8
+conda activate tensorflow-serving
+pip install --no-cache-dir -r ./requirements.txt
+```
+
 ## Ejecución
 
 Para ejecutar el modelo solo tenemos que hacer
