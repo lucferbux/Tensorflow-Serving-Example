@@ -46,7 +46,6 @@ Con ello debería salir una ruta donde **el modelo se ha guardado temporalmente*
 ## Model Serving
 
 Una vez ejecutado el modelo, si queremos servirlo con Tensorflow podemos copiar el ultimo mensaje o parametrizar el siguiente código:
-*nota: en macos m1 no funciona*
 
 ```bash
 docker pull tensorflow/serving
@@ -55,6 +54,17 @@ docker run -p 8501:8501 \
   --privileged=true --platform linux/amd64 \
   --mount type=bind,source={export_path},target=/models/fashion_model \
   -e MODEL_NAME=fashion_model -t tensorflow/serving
+```
+
+Si tienes un sistema arm64 puedes usar el siguiente comando:
+
+```bash
+docker pull emacski/tensorflow-serving
+
+docker run -p 8501:8501 \
+  --privileged=true --platform linux/arm64 \
+  --mount type=bind,source={export_path},target=/models/fashion_model \
+  -e MODEL_NAME=fashion_model -t emacski/tensorflow-serving
 ```
 
 ## Predicción

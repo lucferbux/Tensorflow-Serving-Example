@@ -1,6 +1,6 @@
 tensorflow==2.14.0; sys_platform != 'darwin' or platform_machine != 'arm64'
 tensorflow-macos==2.14.0; sys_platform == 'darwin' and platform_machine == 'arm64'
 protobuf==3.20.*
-numpy
+numpy<2.0
 matplotlib
 Pillow

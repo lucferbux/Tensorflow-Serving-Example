@@ -21,5 +21,7 @@ def save_model(model):
 
     print(
         f"docker run -p 8501:8501 --privileged=true --platform linux/amd64 --mount type=bind,source={MODEL_DIR},target=/models/fashion_model -e MODEL_NAME=fashion_model -t tensorflow/serving")
+    print(
+        f"docker run -p 8501:8501 --privileged=true --platform linux/arm64 --mount type=bind,source={MODEL_DIR},target=/models/fashion_model -e MODEL_NAME=fashion_model -t emacski/tensorflow-serving")
 
     return export_path
